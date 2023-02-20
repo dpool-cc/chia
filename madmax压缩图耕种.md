@@ -165,6 +165,25 @@ cp  ~/blockchain_v2_mainnet.sqlite  ~/.chia/mainnet/db/
 
 ```
 
+切换矿池
+
+```
+./chia.bin plotnft join -u https://vip.dpool.cc:9999 -i 2
+{'authentication_token_timeout': 5,
+ 'description': 'Welcome to Dpool, our long-term focus on the chia ecosystem.',
+ 'fee': '0',
+ 'logo_url': 'https://www.chia.net/img/chia_logo.svg',
+ 'minimum_difficulty': 5,
+ 'name': 'Dpool Pool',
+ 'protocol_version': 1,
+ 'relative_lock_height': 100,
+ 'target_puzzle_hash': '0x9d9c5296f00b89c2271ab4a00f249ab3a0106d8d73dd02242f3ea6357b4cde04'}
+
+Will join pool: https://vip.dpool.cc:9999 with Plot NFT 953890000.
+Confirm [n]/y:
+
+```
+
 关闭madmax-farmer客户端
 
 ```
@@ -206,9 +225,9 @@ cp  ~/blockchain_v2_mainnet.sqlite  ~/.chia/mainnet/db/
 
 madmax压缩图抽成是作为他的开发费用，比例大概是1.125%-3.125%
 
-如果是通过CPU挂图，farmer如果爆块，那么有1/8的概率，0.25的爆块奖励将作为抽成，抽成比例是0.25xch/2xch*1/8=1.562%
+如果是通过CPU挂图farmer爆块，那么有1/8的概率，0.25的爆块奖励将作为抽成，抽成比例是0.25xch/2xch*1/8=1.562%
 
-如果是通过CPU挂图，farmer如果爆块，那么有1/8的概率，0.25的爆块奖励将作为抽成，抽成比例是0.25xch/2xch*1/4=3.125%
+如果是通过GPU挂图farmer爆块，那么有1/4的概率，0.25的爆块奖励将作为抽成，抽成比例是0.25xch/2xch*1/4=3.125%
 
 ## 待续：
 
