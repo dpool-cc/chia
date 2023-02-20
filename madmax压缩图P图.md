@@ -109,7 +109,7 @@ Usage:
 附：[简易的p图脚本](https://github.com/dpool-cc/chia/blob/main/cuda_madmax.sh)，修改脚本里的农民公钥和合约地址
 
 
-更详细的操作可以参考[官方Github](https://github.com/madMAx43v3r/chia-gigahorse)
+更详细的操作可以参考Madmax-Gigahorse的[Github](https://github.com/madMAx43v3r/chia-gigahorse)
 
 ## 待续：
 
