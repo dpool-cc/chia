@@ -4,21 +4,25 @@
 
 ### 硬件（纯内存）
 
-显卡显存（VRAM）不小于**8G**，N卡；内存（RAM）不小于**256GB**；CPU无要求 
+- 显卡显存（VRAM）不小于**8G**，N卡
 
-推荐显卡: 1.闲置的8GB显存的显卡 2. 3060、3060ti 
+- 内存（RAM）不小于**256GB**
+  
+- CPU无要求 
+
+  经测试，256GB 1600 DDR3， 3060 12G 可以3分钟生成一个等级8（71.3GiB）的压缩图
 
 ###	软件
 
-安全起见,请在单独的机器上运行闭源软件（包括压缩图的plotter软件和farmer软件）
+    安全起见,请在单独的机器上运行闭源软件（包括压缩图的plotter软件和farmer软件）
 
-1.用官方钱包创建一个新的钱包密钥，专用于压缩图的p图和挂机
+- 用官方钱包创建一个新的钱包密钥，专用于压缩图的p图和挂机
 
-2.登陆新钱包，创建一个启动器（plotnft）
+- 登陆新钱包，创建一个启动器（plotnft）
 
-3.记录新钱包的农民密钥和启动器的合约地址
+- 记录新钱包的农民密钥和新创建的启动器合约地址
 
-4.下载压缩图p图软件软件
+- 下载压缩图plotter程序（K32)到单独的机器上
 
 #### Linux
 
@@ -28,12 +32,17 @@ wget https://github.com/madMAx43v3r/chia-gigahorse/blob/master/cuda-plotter/linu
 
 #### Windows
 
+浏览器打开下载地址
 
-https://github.com/madMAx43v3r/chia-gigahorse/blob/master/cuda-plotter/linux/x86_64/cuda_plot_k32
+```
+https://github.com/madMAx43v3r/chia-gigahorse/blob/master/cuda-plotter/windows/cuda_plot_k32.exe
 
+```
 
 其他size、系统的plotter软件，从https://github.com/madMAx43v3r/chia-gigahorse/blob/master/cuda-plotter
 
+
+## 使用方法（Linux）
 
 madMAx43v3r的GPU-plotter使用方法和madMAx43v3r的CPU-plotter图工具用法类似，--help打印使用说明
 
@@ -79,29 +88,37 @@ Usage:
 
 ```bash
 
-./cuda_plot_k32 -f ab7c1167cdae2a8d26a6705979ec42c566bb17eed96034f91c0b0df778d154620fd917e720e5e11d941961699db3c79a -c  \    xch1c5xf378dc5d2nu4g9n5em7zsq39xdqpwh6lk529lr24hhz6lsx0sqjkzda -t /mnt/ssd/plots -C 8 -d /mnt/hdd1/plots -r 1 -n 1
+./cuda_plot_k32 -f ab7c1167cdae2a8d26a6705979ec42c566bb17eed96034f91c0b0df778d154620fd917e720e5e11d941961699db3c79a -c    xch1c5xf378dc5d2nu4g9n5em7zsq39xdqpwh6lk529lr24hhz6lsx0sqjkzda -t /mnt/ssd/plots/ -C 8 -d /mnt/hdd1/plots/ -n 1
 
 ```
 
-显卡压缩图的生成速度一般大于单个机械硬盘的写入速度，如果按180秒（系统配置3060_12G + 256_ddr3_1600）生成一个C8压缩图(71.3Gib)计算,需要3个机械硬盘同时接收plot
+显卡压缩图的生成速度一般大于单个机械硬盘的写入速度，如果按180秒（系统配置3060_12G + 256_ddr3_1600）生成一个C8压缩图(71.3Gib)
 
-p图的时候可以通过-d设置多个机械硬盘Plot目录，gigahorse会将plot文件从临时目录并行分发
+计算,需要3个机械硬盘同时接收plotp图的时候可以通过-d设置多个机械硬盘Plot目录，gigahorse会从临时目录并行分发plot文件。p图过程中
+
+可以卸载更换机械硬盘，gigahorse会检测每个目标目录的可用状态，当plot目标目录重新挂载后仍能正常分发plot。以下命令一直p图，并设置
+
+3个机械盘plot目录：
 
 ```bash
 
-./cuda_plot_k32 -f ab7c1167cdae2a8d26a6705979ec42c566bb17eed96034f91c0b0df778d154620fd917e720e5e11d941961699db3c79a -c  \    xch1c5xf378dc5d2nu4g9n5em7zsq39xdqpwh6lk529lr24hhz6lsx0sqjkzda -t /mnt/ssd/tmp -C 8 -d /mnt/ssd/plots -r 1 -n 10
+./cuda_plot_k32 -f ab7c1167cdae2a8d26a6705979ec42c566bb17eed96034f91c0b0df778d154620fd917e720e5e11d941961699db3c79a -c  xch1c5xf378dc5d2nu4g9n5em7zsq39xdqpwh6lk529lr24hhz6lsx0sqjkzda -t /mnt/ssd/plots/ -C 8 -n -1 -d /mnt/hdd1/plots/ -d /mnt/hdd2/plots/ -d /mnt/hdd3/plots/
 
 ```
 
+附：[简易的p图脚本](https://github.com/dpool-cc/chia/blob/main/cuda_madmax.sh)，修改脚本里的农民公钥和合约地址
+
+
+更详细的操作可以参考[官方Github](https://github.com/madMAx43v3r/chia-gigahorse)
+
 ## 待续：
 
-更详细的操作可以参考[Gigahorse-Github](https://github.com/madMAx43v3r/chia-gigahorse)
+Windows操作说明
 
-Gigahorse配套了plot远程分发工具[plot-sink](https://github.com/madMAx43v3r/chia-plot-sink)
+半内存P图
 
-如果系统内存小于256G，可以通过-2 -3设置固态来进行p图
+远程分发工具[Plot-sink](https://github.com/madMAx43v3r/chia-plot-sink)
 
-Windows的压缩图p图操作说明
 
 ## 技术交流
 
