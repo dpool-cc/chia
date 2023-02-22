@@ -106,7 +106,34 @@ Usage:
 
 ```
 
-附：[简易的p图脚本](https://github.com/dpool-cc/chia/blob/main/cuda_madmax.sh)，修改脚本里的农民公钥和合约地址
+附：[简易的P图脚本](https://github.com/dpool-cc/chia/blob/main/cuda_madmax.sh)，修改脚本里的农民公钥和合约地址
+
+
+## 半内存P图
+
+当系统可用内存不足256GB，可以使用固态充当缓存替代部分内存进行显卡P图
+
+
+### 1/2内存模式
+
+当可用系统内存不足(128GB <=RAM < 256GB）,可以使用参数 -2 设置固态缓冲区进行P图
+
+```
+./cuda_plot_k32 -f ab7c1167cdae2a8d26a6705979ec42c566bb17eed96034f91c0b0df778d154620fd917e720e5e11d941961699db3c79a -c  xch1c5xf378dc5d2nu4g9n5em7zsq39xdqpwh6lk529lr24hhz6lsx0sqjkzda -t /mnt/ssd/plots/ -C 8 -2 /mnt/ssd1/tmp -n -1 -d /mnt/hdd1/plots/ 
+```
+
+根据压缩等级的不同，充当缓冲区的固态大概需要150-180G的空间（按K32计算）
+
+
+### 1/4内存模式
+
+当可用系统内存不足(64GB <=RAM < 128GB）,可以使用参数 -3 设置固态缓冲区进行P图
+
+```
+./cuda_plot_k32 -f ab7c1167cdae2a8d26a6705979ec42c566bb17eed96034f91c0b0df778d154620fd917e720e5e11d941961699db3c79a -c  xch1c5xf378dc5d2nu4g9n5em7zsq39xdqpwh6lk529lr24hhz6lsx0sqjkzda -t /mnt/ssd/plots/ -C 8 -3 /mnt/ssd1/tmp -n -1 -d /mnt/hdd1/plots/ 
+```
+
+根据压缩等级的不同，充当缓冲区的固态大概需要250G的空间（按K32计算）
 
 
 更详细的操作可以参考Madmax-Gigahorse的[Github](https://github.com/madMAx43v3r/chia-gigahorse)
