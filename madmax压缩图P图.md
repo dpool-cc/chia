@@ -135,17 +135,19 @@ Usage:
 
 根据压缩等级的不同，充当缓冲区的固态大概需要250G的空间（按K32计算）
 
+### 半显存P图
+
+当显卡的显存不足8GB，可以设置 -S 参数来减少显存占用（牺牲性能）。-S的默认值是4，最小值是2，每增加1，显存占用约增加2G。设置 -S 为2，可以使用5G、6G显存显卡进行P图
+
+## 注意
+
+文档中涉及的硬件要求、参数设置都是按K32计算，如果其他size的P图，请自行估算
 
 更详细的操作可以参考Madmax-Gigahorse的[Github](https://github.com/madMAx43v3r/chia-gigahorse)
 
 ## 待续：
 
 Windows操作说明
-
-半内存P图
-
-远程分发工具[Plot-sink](https://github.com/madMAx43v3r/chia-plot-sink)
-
 
 ## 技术交流
 
