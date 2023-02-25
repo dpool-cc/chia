@@ -10,8 +10,6 @@
   
 - CPU无要求 
 
-  经测试，256GB 1600 DDR3， 3060 12G 可以3分钟生成一个等级8（71.3GiB）的压缩图
-
 ###	软件
 
     安全起见,请在单独的机器上运行闭源软件（包括压缩图的plotter软件和farmer软件）
@@ -23,11 +21,13 @@
 - 记录新钱包的农民密钥和新创建的启动器合约地址
 
 - 下载压缩图plotter程序（K32)到单独的机器上
+ 
+ 经测试，Ubuntu 20.04 lts，256GB 1600 DDR3， 3060 12G 可以3分钟生成一个等级8（71.3GiB）的压缩图
 
 #### Linux
 
 ```bash
-wget https://github.com/madMAx43v3r/chia-gigahorse/blob/master/cuda-plotter/linux/x86_64/cuda_plot_k32
+https://github.com/madMAx43v3r/chia-gigahorse/blob/master/cuda-plotter/linux/x86_64/cuda_plot_k32
 ```
 
 #### Windows
@@ -106,7 +106,7 @@ Usage:
 
 ```
 
-附：[简易的P图脚本](https://github.com/dpool-cc/chia/blob/main/cuda_madmax.sh)，修改脚本里的农民公钥和合约地址
+附：[简易的P图脚本(linux)](https://github.com/dpool-cc/chia/blob/main/cuda_madmax.sh)，使用前修改脚本里的农民公钥、合约地址、目录等参数
 
 
 ## 半内存P图
@@ -139,6 +139,15 @@ Usage:
 
 当显卡的显存不足8GB，可以设置 -S 参数来减少显存占用（牺牲性能）。-S的默认值是4，最小值是2，每增加1，显存占用约增加2G。设置 -S 为2，可以使用5G、6G显存显卡进行P图
 
+## 使用方法（Windows）
+
+使用示例：压缩等级8, 临时目录D:\tmp\, Plot目录E:\plots\, p图数量1，共享显存0GB
+```
+C:\cuda_plotter\windows\cuda_plot_k32.exe  -f ab7c1167cdae2a8d26a6705979ec42c566bb17eed96034f91c0b0df778d154620fd917e720e5e11d941961699db3c79a -c  xch1c5xf378dc5d2nu4g9n5em7zsq39xdqpwh6lk529lr24hhz6lsx0sqjkzda -t D:\tmp\ -C 8  -d E:\plots\  -n 1 -M 0
+```
+
+附：[简易的P图脚本(windows)](https://github.com/dpool-cc/chia/blob/main/cuda_madmax.bat)，使用前修改脚本里的农民公钥、合约地址、目录等参数
+
 ## 注意
 
 文档中涉及的硬件要求、参数设置都是按K32计算，如果其他size的P图，请自行估算
@@ -147,7 +156,6 @@ Usage:
 
 ## 待续：
 
-Windows操作说明
 
 ## 技术交流
 
